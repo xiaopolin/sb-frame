@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 每60秒扫描一次文件位置，若文件不存在则会重新加载；同时不会打印logback内部debug日志 -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+	<!-- 控制台日志打印 -->
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+	<!-- 定义变量 -->
+	<springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+	<springProperty scope="context" name="LOG_PATH" source="logging.path" defaultValue="logs/" />
+	<property name="LOG_FILE" value="${LOG_PATH}${APP_NAME}.log}" />
+
+	<contextName>${APP_NAME}</contextName>
+
+		<!-- 使用默认的日志文件打印方式，每10兆一个循环打印日志，若启用base设置则可以把下面的全部注释 -->
+<!--	<include resource="org/springframework/boot/logging/logback/base.xml" />-->
+
+	<!-- 自定义MDC引入 -->
+	<conversionRule conversionWord="MDC" converterClass="com.xpl.framework.config.MDCConfig" />
+
+	<!-- 记录INFO以上级别的所有日志 -->
+	<appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}sb_frame_info.log</file>
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<!-- 日志归档 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}info_%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>180</maxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<!-- 单独记录ERROR日志 -->
+	<appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}sb_frame_error.log</file>
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<!-- 日志归档 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}error_%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>180</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<!-- 不建议使用INFO以下的日志输出，因为会同时输出太多不重要的日志 -->
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="INFO_FILE" />
+		<appender-ref ref="ERROR_FILE" />
+	</root>
+
+</configuration>

@@ -1,0 +1,43 @@
+server:
+  servlet:
+    context-path: /sb-frame
+  port: 8888
+
+spring:
+  application:
+    name: sb-frame
+  servlet:
+    multipart:
+      max-file-size: 5242880
+      max-request-size: 5242880
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/my_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    druid:
+      filter:
+        slf4j:
+          enabled: true
+        wall:
+          enabled: true
+        stat:
+          enabled: true
+      initial-size: 1
+      min-idle: 1
+      max-active: 10
+      validation-query: SELECT 1 from dual
+      validation-query-timeout: 6
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      use-global-data-source-stat: true
+
+mybatis:
+  config-location: classpath:config/spring-mybatis.xml
+  mapper-locations: classpath:com/xpl/dao/mapper/*.xml
