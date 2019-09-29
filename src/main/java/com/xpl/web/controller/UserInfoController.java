@@ -15,12 +15,14 @@ import com.xpl.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -29,6 +31,8 @@ public class UserInfoController {
 
     @Autowired
     private UserInfoService userInfoService;
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
 
     @GetMapping(value = "exclude")
@@ -40,7 +44,6 @@ public class UserInfoController {
         log.info("info日志打印");
         log.warn("warn日志打印");
         log.error("error日志打印");
-
         result.setCode(ErrorCodeConstant.CODE_SUCCESS);
         result.setMsg(ErrorCodeConstant.ERRORMSG_EXCEPTION);
         return result;

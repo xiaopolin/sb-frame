@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/my_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    druid:
+      filter:
+        slf4j:
+          enabled: true
+        wall:
+          enabled: true
+        stat:
+          enabled: true
+      initial-size: 1
+      min-idle: 1
+      max-active: 10
+      validation-query: SELECT 1 from dual
+      validation-query-timeout: 6
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      use-global-data-source-stat: true
+
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    timeout: 3000
+    database: 2
+
+    jedis:
+      pool:
+        max-idle: 300
