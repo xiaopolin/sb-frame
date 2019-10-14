@@ -1,9 +1,12 @@
 package com.xpl.framework.security.filter;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 public class SimpleFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -13,7 +16,7 @@ public class SimpleFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
-        System.out.println("过滤器已启动！！！");
+        log.info("过滤器已启动！！！");
         //设置跨域请求
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         response.setHeader("Access-Control-Allow-Origin", "*");

@@ -3,9 +3,11 @@ package com.xpl.service.ServiceImpl;
 import com.xpl.api.po.UserInfoPO;
 import com.xpl.dao.UserInfoDao;
 import com.xpl.service.UserInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service("userInfoService")
 public class UserInfoServiceImpl implements UserInfoService {
 
@@ -14,7 +16,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public UserInfoPO getById(int id) {
-        System.out.println("正常的impl被调用");
         UserInfoPO userInfoPO = userInfoDao.getById(id);
         return userInfoPO;
     }

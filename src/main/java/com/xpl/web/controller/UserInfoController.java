@@ -36,7 +36,7 @@ public class UserInfoController {
 
 
     @GetMapping(value = "exclude")
-    public ResultView<?> exclude(){
+    public ResultView<?> exclude(UserInfoPO userInfoPO){
         ResultView<?> result = new ResultView<>();
 
         log.trace("trace日志打印");
@@ -50,7 +50,7 @@ public class UserInfoController {
     }
 
     @GetMapping(value = "user/{id}")
-    public ResultView<UserInfoPO> getUser(@PathVariable("id") int id){
+    public ResultView<UserInfoPO> getUser(@PathVariable("id") int id, UserInfoPO userInfoPO, String test){
         ResultView<UserInfoPO> result = new ResultView<>();
 
         result.setData(userInfoService.getById(id));
@@ -80,10 +80,10 @@ public class UserInfoController {
 
             Date expiration = new Date(new Date().getTime() + 5 * 60 * 10000);
             URL url = cosclient.generatePresignedUrl(CosConstant.BUCKET, cosKey, expiration);
-            System.out.println("图片在COS服务器上的url:" + url);
+            log.info("图片在COS服务器上的url:" + url);
             String urlStr = url.toString();
             realUrl = urlStr.substring(0, urlStr.indexOf("?sign="));
-            System.out.println("实际截取后的路径为：" + realUrl);
+            log.info("实际截取后的路径为：" + realUrl);
 
         } catch (IOException e) {
             e.printStackTrace();
