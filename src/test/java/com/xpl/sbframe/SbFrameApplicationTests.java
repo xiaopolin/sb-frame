@@ -47,7 +47,7 @@ public class SbFrameApplicationTests {
         list.add("8");
         list.add("7");
         list.add("6");
-        Object z = redisTemplate.opsForList().remove("z", -1, "6");
+        Object z = redisUtil.sAdd("p", "1", "2", "3");
 
 
 
@@ -56,6 +56,13 @@ public class SbFrameApplicationTests {
 
 
 
+    }
+
+    @Test
+    public void testBitSet(){
+        redisTemplate.opsForValue().setBit("testBit1",  9, false);
+        //Boolean a = redisTemplate.opsForValue().bitField("login.20180906",  102400000);
+        //System.out.println(2%2);
     }
 
 
