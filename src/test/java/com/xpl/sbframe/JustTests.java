@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class JustTests {
 
@@ -28,9 +29,20 @@ public class JustTests {
 
     @Test
     public void testList(){
-        Object[] field = {"a", "b", null, null};
-        Collection a = new ArrayList();
-        a.add("n");
-        System.out.println(Arrays.asList(field).containsAll(a));
+        List<UserInfoPO> userInfoPOS = new ArrayList<>();
+        UserInfoPO userInfoPO1 = new UserInfoPO();
+        userInfoPO1.setName("aaa");
+        userInfoPO1.setPassword("123456");
+
+        userInfoPOS.add(userInfoPO1);
+        System.out.println(userInfoPOS);
+
+
+        userInfoPO1.setName("bbb");
+        userInfoPO1.setPassword("456789");
+        userInfoPOS.add(userInfoPO1);
+
+        System.out.println(userInfoPOS);
     }
+
 }

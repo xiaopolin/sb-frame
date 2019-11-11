@@ -21,7 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -55,6 +57,26 @@ public class UserInfoController {
 
         result.setData(userInfoService.getById(id));
         return result;
+    }
+
+    @PostMapping(value = "user")
+    public ResultView<?> insertUser(){
+
+        List<UserInfoPO> userInfoPOS = new ArrayList<>();
+        UserInfoPO userInfoPO1 = new UserInfoPO();
+        userInfoPO1.setName("aaa");
+        userInfoPO1.setPassword("123456");
+
+        userInfoPOS.add(userInfoPO1);
+
+        UserInfoPO userInfoPO2 = new UserInfoPO();
+        userInfoPO2.setName("bbb");
+        userInfoPO2.setPassword("456789");
+        userInfoPOS.add(userInfoPO2);
+
+        userInfoService.insertUserInfo(userInfoPOS);
+
+        return new ResultView<>(ErrorCodeConstant.CODE_SUCCESS);
     }
 
     @RequestMapping(value = "uploadFile", method = RequestMethod.POST)
