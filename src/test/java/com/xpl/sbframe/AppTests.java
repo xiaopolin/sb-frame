@@ -16,7 +16,7 @@ import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SbFrameApplicationTests {
+public class AppTests {
 
     @Autowired
     private DataSource dataSource;
