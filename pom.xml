@@ -57,6 +57,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring AOP -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!-- JSON -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -101,9 +107,11 @@
             <version>5.6.3</version>
         </dependency>
 
+        <!--阿里的excel-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>1.1.1</version>
         </dependency>
 
     </dependencies>
