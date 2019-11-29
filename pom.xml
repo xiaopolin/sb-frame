@@ -11,7 +11,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <start-class>com.xpl.App</start-class>
+        <start-class>com.xpl.SbFrameApp</start-class>
     </properties>
 
     <!-- Spring Boot 大版本确定 -->

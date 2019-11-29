@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(basePackages = "com.xpl.dao")
 @EnableTransactionManagement
 @SpringBootApplication
-public class App {
+public class SbFrameApp {
 
     public static void main(String[] args) {
-        ApplicationContext ac = SpringApplication.run(App.class, args);
+        ApplicationContext ac = SpringApplication.run(SbFrameApp.class, args);
         //随项目启动的方法
         ac.getBean(com.xpl.web.timer.SystemTimer.class).speak();
     }

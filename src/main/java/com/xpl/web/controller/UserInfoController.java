@@ -7,9 +7,9 @@ import com.qcloud.cos.auth.COSCredentials;
 import com.qcloud.cos.model.ObjectMetadata;
 import com.qcloud.cos.model.PutObjectRequest;
 import com.qcloud.cos.region.Region;
-import com.xpl.api.constant.CosConstant;
-import com.xpl.api.po.UserInfoPO;
-import com.xpl.api.constant.ErrorCodeConstant;
+import com.xpl.entity.constant.CosConstant;
+import com.xpl.entity.po.UserInfoPO;
+import com.xpl.entity.constant.ErrorCodeConstant;
 import com.xpl.framework.ResultView;
 import com.xpl.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RestController

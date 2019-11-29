@@ -1,6 +1,6 @@
 package com.xpl.service.ServiceImpl;
 
-import com.xpl.api.po.UserInfoPO;
+import com.xpl.entity.po.UserInfoPO;
 import com.xpl.dao.UserInfoDao;
 import com.xpl.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
