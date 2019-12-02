@@ -46,7 +46,7 @@ public class UserInfoController {
         log.warn("warn日志打印");
         log.error("error日志打印");
         result.setCode(ErrorCodeConstant.CODE_SUCCESS);
-        result.setMsg(ErrorCodeConstant.ERRORMSG_EXCEPTION);
+        result.setMsg("日志已打印！！！");
         return result;
     }
 

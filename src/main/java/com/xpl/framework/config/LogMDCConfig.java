@@ -5,7 +5,7 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 
 import java.util.Map;
 
-public class MDCConfig extends MDCConverter {
+public class LogMDCConfig extends MDCConverter {
 
     @Override
     public String convert(ILoggingEvent event) {

@@ -12,7 +12,7 @@ spring:
       max-request-size: 5242880
   profiles:
     active:
-      - dev
+      - local
 
 mybatis:
   config-location: classpath:com/xpl/framework/config/spring-mybatis.xml
