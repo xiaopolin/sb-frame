@@ -17,8 +17,8 @@
   Controller父类，Entity父类
   ResultView: 项目默认返回实体类
   
-  config:Spring IOC 控制反转配置
-  aop:切面
+  config:动态注入配置类
+  aop:切面配置类
   security:拦截器，过滤器
   util:工具类
   ~~~
